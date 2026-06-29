@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Highland Hills Property Owners' Association</title>
+<meta name="description" content="Official information for the Highland Hills Property Owners' Association in Highlands, NC: contacts, meetings, dues, documents, and community rules.">
+
+<!--
+  ============================================================
+  HIGHLAND HILLS POA  -  single-file website
+  ============================================================
+  HOW TO EDIT:
+  - Everything (text + styles) lives in this one file.
+  - All content is filled in. Update values here when the Board changes them
+    (annual dues, dues due date, meeting date/place, delinquent interest rate).
+  - Header photo: the hero uses images/lake.webp. To swap it, replace that
+    file in the repo (keep the name) or change the filename in the header rule.
+  - After any edit, update the date in the footer ("Last updated").
+  ============================================================
+-->
+
+<style>
+  :root{
+    --green:#1f4733;          /* primary: pine green */
+    --green-deep:#173524;     /* header / footer */
+    --ink:#1a1a1a;            /* body text */
+    --bg:#ffffff;             /* page background */
+    --panel:#f1f4f0;          /* soft panel fill */
+    --line:#d4dad0;           /* hairlines / borders */
+    --muted:#5a635c;          /* secondary text */
+    --serif:Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:18px;
+    line-height:1.65;
+    -webkit-text-size-adjust:100%;
+  }
+
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 16px;z-index:10;}
+  .skip:focus{left:8px;top:8px;}
+
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px;}
+
+  /* ---- Header (lake photo + green wash) ---- */
+  header{
+    color:#fff;
+    background-color:var(--green-deep);
+    background-image:linear-gradient(rgba(15,33,22,.55), rgba(15,33,22,.74)), url('images/lake.webp');
+    background-size:cover;
+    background-position:center;
+    padding:48px 0 52px;
+  }
+  header h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:2rem;
+    line-height:1.2;
+    margin:0 0 8px;
+    text-shadow:0 1px 3px rgba(0,0,0,.45);
+  }
+  header p{
+    margin:0;
+    font-size:1.08rem;
+    color:#eaf1ea;
+    text-shadow:0 1px 3px rgba(0,0,0,.4);
+  }
+
+  /* ---- Next-meeting strip ---- */
+  .next-meeting{background:var(--green);color:#fff;padding:12px 0;}
+  .next-meeting .wrap{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;justify-content:space-between;}
+  .next-meeting p{margin:0;font-size:1.02rem;}
+  .next-meeting a{color:#fff;font-weight:700;}
+
+  /* ---- On-this-page navigation ---- */
+  nav{border-bottom:1px solid var(--line);background:var(--panel);padding:14px 0;}
+  nav p{margin:0 0 8px;font-weight:700;color:var(--muted);font-size:0.95rem;text-transform:uppercase;letter-spacing:0.04em;}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;}
+  nav a{display:block;padding:12px 16px;min-height:44px;background:#fff;border:1px solid var(--line);border-radius:6px;color:var(--green);text-decoration:none;font-weight:600;}
+  nav a:hover,nav a:focus-visible{background:var(--green);color:#fff;border-color:var(--green);}
+
+  /* ---- Sections ---- */
+  main{padding:8px 0 0;}
+  section{padding:30px 0;border-bottom:1px solid var(--line);scroll-margin-top:16px;}
+  section:last-of-type{border-bottom:none;}
+
+  h2{font-family:var(--serif);font-size:1.55rem;line-height:1.25;margin:0 0 14px;color:var(--green);}
+  h3{font-size:1.15rem;margin:24px 0 6px;color:var(--ink);}
+  p{margin:0 0 14px;}
+
+  a{color:var(--green);}
+  a:focus-visible{outline:3px solid var(--green);outline-offset:2px;}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:0 0 16px;}
+  .panel h3{margin-top:0;}
+
+  /* ---- Contact email links: large tap targets ---- */
+  .contact{display:block;padding:16px 18px;margin:0 0 12px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--green);border-radius:6px;}
+  .contact a{font-weight:700;font-size:1.1rem;overflow-wrap:break-word;}
+  .contact .note{display:block;margin-top:4px;color:var(--muted);font-size:1rem;}
+
+  .facts{margin:0 0 14px;}
+  .facts dt{font-weight:700;margin-top:12px;}
+  .facts dt:first-child{margin-top:0;}
+  .facts dd{margin:2px 0 0;}
+
+  /* ---- Document list ---- */
+  .docs{list-style:none;margin:0;padding:0;}
+  .docs li{margin:0 0 12px;}
+  .docs a{display:block;padding:14px 16px;min-height:44px;background:#fff;border:1px solid var(--line);border-radius:6px;text-decoration:none;font-weight:700;}
+  .docs a:hover,.docs a:focus-visible{background:var(--panel);}
+  .docs .desc{display:block;margin-top:4px;color:var(--muted);font-weight:400;font-size:1rem;}
+
+  /* ---- Fee list ---- */
+  ul.fees{margin:6px 0 0;padding-left:20px;}
+  ul.fees li{margin:0 0 6px;}
+
+  /* ---- Helpful numbers ---- */
+  .area-note{color:var(--muted);font-size:0.98rem;margin:-2px 0 14px;}
+  .numbers{list-style:none;margin:0 0 8px;padding:0;}
+  .numbers li{padding:14px 0;border-bottom:1px solid var(--line);}
+  .numbers li:last-child{border-bottom:none;}
+  .numbers .svc{display:block;font-weight:700;}
+  .numbers .tel{display:inline-block;padding:8px 0;font-size:1.15rem;font-weight:700;}
+  .numbers .detail{display:block;color:var(--muted);font-size:1rem;margin-top:2px;}
+
+  /* ---- Placeholder styling ---- */
+  .ph{background:#fff7d6;border:1px dashed #c9a900;color:#6b5800;padding:1px 6px;border-radius:4px;font-style:italic;font-size:0.95em;}
+
+  /* ---- Footer ---- */
+  footer{background:var(--green-deep);color:#dbe5dd;padding:24px 0;font-size:0.95rem;text-align:center;}
+  footer strong{color:#fff;display:block;margin-bottom:4px;}
+
+  @media (min-width:720px){
+    body{font-size:19px;}
+    header{padding:64px 0 68px;}
+    header h1{font-size:2.4rem;}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header>
+  <div class="wrap">
+    <h1>Highland Hills Property Owners' Association</h1>
+    <p>A private lake community in Highlands, North Carolina</p>
+  </div>
+</header>
+
+<div class="next-meeting">
+  <div class="wrap">
+    <p>Next annual meeting: Saturday, July 18, 2026 &middot; 10:00 AM &middot; Highlands Recreation Center</p>
+    <p><a href="#meetings">Meeting details &darr;</a></p>
+  </div>
+</div>
+
+<nav aria-label="On this page">
+  <div class="wrap">
+    <p>On this page</p>
+    <ul>
+      <li><a href="#welcome">Welcome</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#meetings">Meetings</a></li>
+      <li><a href="#dues">Dues</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#numbers">Helpful numbers</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- 1. WELCOME / ABOUT -->
+    <section id="welcome" aria-labelledby="welcome-h">
+      <h2 id="welcome-h">Welcome</h2>
+      <p>
+        Highland Hills is a private residential community of 56 lots in Highlands
+        (Macon County), North Carolina, set among wooded hills around Apple Lake.
+      </p>
+      <p>
+        The Highland Hills Property Owners' Association, Inc. &mdash; a North
+        Carolina nonprofit established in 1999 &mdash; maintains the community's
+        private roads and common areas, administers community standards, and keeps
+        owners informed. Every lot owner is a member of the association.
+      </p>
+    </section>
+
+    <!-- 2. CONTACTS -->
+    <section id="contacts" aria-labelledby="contacts-h">
+      <h2 id="contacts-h">Contacts</h2>
+      <p>Each address below reaches whoever currently holds that role. Use the one that matches your question.</p>
+
+      <div class="contact">
+        <a href="mailto:president@highlandhillspoa.com">president@<wbr>highlandhillspoa.com</a>
+        <span class="note">General inquiries about the community and the association.</span>
+      </div>
+
+      <div class="contact">
+        <a href="mailto:treasurer@highlandhillspoa.com">treasurer@<wbr>highlandhillspoa.com</a>
+        <span class="note">Dues, payments, and financial questions.</span>
+      </div>
+
+      <div class="contact">
+        <a href="mailto:arc@highlandhillspoa.com">arc@<wbr>highlandhillspoa.com</a>
+        <span class="note">Architectural Review Committee: exterior changes, paint, additions, fences, and tree removal.</span>
+      </div>
+
+      <p>By mail: Highland Hills POA, P.O. Box 1844, Highlands, NC 28741.</p>
+    </section>
+
+    <!-- 3. MEETINGS -->
+    <section id="meetings" aria-labelledby="meetings-h">
+      <h2 id="meetings-h">Meetings</h2>
+
+      <div class="panel">
+        <h3>Annual meeting of members</h3>
+        <p style="margin:0;">
+          Saturday, July 18, 2026, 10:00 AM<br>
+          Highlands Recreation Center, 600 North 4th Street, Highlands, NC 28741
+        </p>
+      </div>
+
+      <p>
+        The board also meets quarterly. Written notice is sent by mail or email
+        before each meeting &mdash; please keep your contact information current
+        with the association.
+      </p>
+      <p>
+        For agendas or past meeting minutes, email
+        <a href="mailto:president@highlandhillspoa.com">president@highlandhillspoa.com</a>.
+      </p>
+    </section>
+
+    <!-- 4. DUES -->
+    <section id="dues" aria-labelledby="dues-h">
+      <h2 id="dues-h">Dues</h2>
+
+      <dl class="facts">
+        <dt>Annual dues (current year)</dt>
+        <dd>Improved lot &mdash; $544.50<br>Unimproved lot &mdash; $199.65</dd>
+
+        <dt>Assessment year</dt>
+        <dd>Calendar year (January&ndash;December).</dd>
+
+        <dt>Due date</dt>
+        <dd>May 1</dd>
+
+        <dt>How to pay</dt>
+        <dd>By check payable to "Highland Hills POA," mailed to P.O. Box 1844, Highlands, NC 28741.</dd>
+      </dl>
+
+      <p>
+        Unpaid dues become delinquent 30 days after the due date, accrue interest
+        at a rate set by the Board, and can become a lien on the lot (per the Declaration).
+        Questions about your account:
+        <a href="mailto:treasurer@highlandhillspoa.com">treasurer@highlandhillspoa.com</a>.
+      </p>
+    </section>
+
+    <!-- 5. DOCUMENTS -->
+    <section id="documents" aria-labelledby="documents-h">
+      <h2 id="documents-h">Documents</h2>
+      <p>Governing documents and forms for the community. (Each link opens a PDF.)</p>
+
+      <ul class="docs">
+        <li>
+          <a href="documents/highland-hills-handbook-2022.pdf">Highland Hills POA Handbook (July 2022)
+          <span class="desc">Includes the Amended &amp; Restated Declaration of Restrictions (the CC&amp;Rs) and its First Amendment, the By-Laws, the Articles of Incorporation, a summary of community rules, helpful local phone numbers, and the community map.</span></a>
+        </li>
+        <li>
+          <a href="documents/arc-application.pdf">ARC Architectural Review Application (Rev. June 2026)
+          <span class="desc">The form to request approval for exterior changes and construction. Submit by email to arc@highlandhillspoa.com.</span></a>
+        </li>
+        <li>
+          <a href="documents/hhpoa-lot-map.pdf">Highland Hills community lot map (PDF)
+          <span class="desc">Numbered map of all lots in the community. No owner names or addresses.</span></a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Frequently asked questions</h2>
+
+      <h3>Do I need approval before changing the outside of my home?</h3>
+      <p>
+        Yes &mdash; written approval is required before you start. All new
+        construction and any change to a structure's exterior &mdash; including
+        paint color, roofing, siding, windows, fences, walls, outbuildings, gates,
+        generators, LP tanks, pole-mounted lighting or signage, driveways and other
+        hardscape, changes to ground elevation or drainage, and tree removal &mdash;
+        must be approved in writing by the ARC or Board before work begins. Verbal
+        descriptions are not accepted. Submit the ARC Architectural Review
+        Application (see Documents) by email to
+        <a href="mailto:arc@highlandhillspoa.com">arc@highlandhillspoa.com</a>, and
+        allow up to 30 days for a reply. Starting or finishing work without approval
+        may result in a fine and an order to undo the change, even if it would have
+        been approved.
+      </p>
+      <p>Impact fees (current as of the October 2023 application; subject to change):</p>
+      <ul class="fees">
+        <li>New home construction &mdash; three-fourths of one percent of cost, $2,500 minimum, plus $250 per roll-off container.</li>
+        <li>Major improvement (over $25,000) &mdash; three-fourths of one percent, $1,000 minimum, plus $250 per roll-off container.</li>
+        <li>Minor improvement (under $25,000) &mdash; $500 flat, plus $250 per roll-off container.</li>
+        <li>Painting &mdash; no fee (color must be ARC-approved).</li>
+        <li>Roof replacement &mdash; no fee unless a dumpster is used ($250 each).</li>
+        <li>Tree removal &mdash; contact <a href="mailto:arc@highlandhillspoa.com">arc@highlandhillspoa.com</a>.</li>
+      </ul>
+
+      <h3>How should I handle trash?</h3>
+      <p>
+        Keep trash receptacles secured in a screened area that is not visible from
+        the road (or use an underground or comparable enclosure). If you use a
+        pickup service, it is your responsibility to make sure cans are secured and
+        returned to their storage area. Do not burn trash, garbage, or refuse
+        anywhere in the community.
+      </p>
+
+      <h3>Where can I park?</h3>
+      <p>
+        Do not park on the roadsides or pull-over areas &mdash; Highland Hills roads
+        are narrow and winding. Each home must provide off-street parking for at
+        least two vehicles. If you need extra space for guests on a special
+        occasion, arrange to use a neighbor's driveway or parking area. Golf carts
+        are allowed on the private roads; off-road motorcycles and any vehicle under
+        5 horsepower (not street-legal) are not.
+      </p>
+
+      <h3>Are pets allowed?</h3>
+      <p>
+        Household pets are allowed. Livestock and other non-household animals are
+        not permitted, and no pet or activity may create a nuisance for neighbors.
+      </p>
+
+      <h3>Can I rent out my home?</h3>
+      <p>
+        Yes, with conditions. You may lease your home as a vacation rental provided
+        the lease covers the entire dwelling and runs at least 4 consecutive days
+        (January 1&ndash;April 30) or at least 7 consecutive days (May
+        1&ndash;December 31). All leases must be in writing and must state that
+        tenants and occupants are bound by the Declaration, its amendments, and the
+        By-Laws. You are responsible for your tenants' and guests' compliance with
+        community rules.
+      </p>
+
+      <h3>What is the speed limit?</h3>
+      <p>
+        The speed limit on Highland Hills roads is 16 mph. Residents walk the roads
+        and children play, so please slow down.
+      </p>
+
+      <h3>Can I use Apple Lake?</h3>
+      <p>
+        Highland Hills owners may use Apple Lake for fishing, swimming, and
+        non-motorized boating. Access is by the designated path through Lot 19 (an
+        easement); Lot 19 and its dock are privately owned &mdash; please stay on
+        the path, carry out any trash, and do not use the dock. Motorized boats are
+        not allowed, and the community does not provide boat storage. Use the lake
+        at your own risk.
+      </p>
+    </section>
+
+    <!-- 7. HELPFUL NUMBERS -->
+    <section id="numbers" aria-labelledby="numbers-h">
+      <h2 id="numbers-h">Helpful numbers</h2>
+      <p class="area-note">Local services and contacts for the community. Area code 828 unless noted &middot; on a phone, tap a number to call.</p>
+
+      <h3>Macon County</h3>
+      <ul class="numbers">
+        <li>
+          <span class="svc">Macon County Sheriff (non-emergency)</span>
+          <a class="tel" href="tel:+18283492104">828-349-2104</a>
+          <span class="detail"><a href="https://www.maconnc.org/sheriffs-office.html">Sheriff's Office</a></span>
+        </li>
+        <li>
+          <span class="svc">Bear Patrol / non-emergency dispatch</span>
+          <a class="tel" href="tel:+18285242020">828-524-2020</a>
+          <span class="detail">Report problem bears and other non-emergencies.</span>
+        </li>
+        <li>
+          <span class="svc">Board of Commissioners</span>
+          <a class="tel" href="tel:+18283492000">828-349-2000</a>
+          <span class="detail"><a href="https://www.maconnc.org/commissioners.html">Board of Commissioners</a></span>
+        </li>
+        <li>
+          <span class="svc">Tax Department &mdash; property taxes</span>
+          <a class="tel" href="tel:+18283492142">828-349-2142</a>
+          <span class="detail"><a href="https://tax.maconnc.org/ITSPublicMA/TaxBillSearch">Pay or search property taxes online</a></span>
+        </li>
+        <li>
+          <span class="svc">Tax maps &amp; GIS</span>
+          <span class="detail"><a href="https://gis2.maconnc.org/maps/default.htm">County tax maps &amp; GIS (online)</a></span>
+        </li>
+        <li>
+          <span class="svc">Animal Services / pet adoption</span>
+          <a class="tel" href="tel:+18283492106">828-349-2106</a>
+          <span class="detail">1377 Lakeside Dr, Franklin &middot; <a href="https://maconnc.org/AnimalServices.html">Animal Services</a></span>
+        </li>
+        <li>
+          <span class="svc">Solid Waste &mdash; Highlands Transfer Station (larger items)</span>
+          <a class="tel" href="tel:+18285262073">828-526-2073</a>
+          <span class="detail">1080 Rich Gap Rd, Highlands &middot; Mon&ndash;Fri 7:30 AM&ndash;4 PM, Sat 8 AM&ndash;1:30 PM.</span>
+        </li>
+        <li>
+          <span class="svc">Buck Creek Convenience Center (everyday trash &amp; recycling)</span>
+          <a class="tel" href="tel:+18285260393">828-526-0393</a>
+          <span class="detail">Closest drop-off &middot; 10333 Buck Creek Rd, Highlands &middot; Mon&ndash;Sat 7 AM&ndash;7 PM, Sun 9 AM&ndash;5 PM.</span>
+        </li>
+        <li>
+          <span class="svc">CodeRED emergency alerts</span>
+          <span class="detail"><a href="https://maconnc.org/emergency-management.html">Sign up for local emergency alerts</a></span>
+        </li>
+      </ul>
+
+      <h3>Highlands (town &amp; community)</h3>
+      <ul class="numbers">
+        <li>
+          <span class="svc">Highlands Fire &amp; Rescue</span>
+          <a class="tel" href="tel:+18285263645">828-526-3645</a>
+          <span class="detail">149 Franklin Rd &middot; <a href="https://www.highlandsnc.org/highlands-fire-department">Highlands Fire &amp; Rescue</a></span>
+        </li>
+        <li>
+          <span class="svc">Hudson Library</span>
+          <a class="tel" href="tel:+18285263031">828-526-3031</a>
+          <span class="detail">554 Main St &middot; <a href="https://www.fontanalib.org/193/Hudson-Library">Hudson Library</a></span>
+        </li>
+        <li>
+          <span class="svc">Highlands Recreation Park &amp; Civic Center</span>
+          <a class="tel" href="tel:+18285263556">828-526-3556</a>
+          <span class="detail">600 N 4th St &middot; <a href="https://www.highlandsnc.org/highlands-parks-and-recreation-department">Parks &amp; Recreation</a></span>
+        </li>
+        <li>
+          <span class="svc">Highlands Post Office</span>
+          <a class="tel" href="tel:+18285262667">828-526-2667</a>
+          <span class="detail">43 Dillard Rd.</span>
+        </li>
+        <li>
+          <span class="svc">Highlands Chamber of Commerce</span>
+          <a class="tel" href="tel:+18285265841">828-526-5841</a>
+          <span class="detail"><a href="https://www.highlandschamber.org">Highlands Chamber</a></span>
+        </li>
+        <li>
+          <span class="svc">Highlands Visitor Center</span>
+          <a class="tel" href="tel:+18285262112">828-526-2112</a>
+          <span class="detail">108 Main St &middot; <a href="https://www.visithighlandsnc.com">Visitor Center</a></span>
+        </li>
+      </ul>
+
+      <h3>Utilities</h3>
+      <ul class="numbers">
+        <li>
+          <span class="svc">Duke Energy &mdash; report an outage</span>
+          <a class="tel" href="tel:+18007693766">800-769-3766</a>
+          <span class="detail">800-POWERON &middot; <a href="https://www.duke-energy.com/outages">Report a power outage</a></span>
+        </li>
+        <li>
+          <span class="svc">Highlands Cable Group &mdash; internet, TV &amp; phone</span>
+          <a class="tel" href="tel:+18285264248">828-526-4248</a>
+          <span class="detail">Local office &middot; <a href="https://www.highlandscablegroup.com">Highlands Cable Group</a></span>
+        </li>
+      </ul>
+
+      <h3>Health</h3>
+      <ul class="numbers">
+        <li>
+          <span class="svc">Highlands-Cashiers Hospital</span>
+          <a class="tel" href="tel:+18285261200">828-526-1200</a>
+          <span class="detail">190 Hospital Dr &middot; <a href="https://www.missionhealth.org/locations/highlands-cashiers-hospital">Highlands-Cashiers Hospital</a></span>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Highland Hills Property Owners' Association, Inc.</strong>
+    P.O. Box 1844, Highlands, NC 28741<br>
+    highlandhillspoa.com &middot; Last updated: June 28, 2026
+  </div>
+</footer>
+
+</body>
+</html>
